@@ -11,6 +11,7 @@ Aanmelden met geldige gegevens
     ...  wachtwoord=UWVTATester
   Log     Controleer titel inlog pagina
   Log     Uitloggen
+  Log     Sluit de browser
 
 Aanmelden met ongeldige gegevens
   Login  url=${url}
