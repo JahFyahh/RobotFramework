@@ -6,6 +6,7 @@ Library    Browser
 
 *** Keywords ***
 Open browser & navigeer naar url
+  [Documentation]    Open een nieuwe browser, zet de grootte van de browser naar 1920x1080 en navigeer naar de opgegeven url
   [Arguments]  ${url}
 
   New Browser        headless=False    browser=firefox
@@ -13,6 +14,7 @@ Open browser & navigeer naar url
   New Page           url=${url}
 
 Login
+  [Documentation]    Login met email en wachtwoord, noteer alle errors, wacht 2 seconden en maak een screenshot
   [Arguments]  ${email}    
   ...          ${wachtwoord}
 
