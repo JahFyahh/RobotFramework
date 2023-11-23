@@ -1,3 +1,6 @@
+# https://robotframework.org/#resources
+# https://marketsquare.github.io/robotframework-browser/Browser.html
+
 *** Settings ***
 Library    Browser
 
