@@ -1,12 +1,24 @@
+*** Settings ***
+Library    Browser
+
 *** Keywords ***
 Open browser & navigeer naar url
   [Arguments]  ${url}
 
-  Log    Open webpagina: ${url}
+  New Browser        headless=False    browser=firefox
+  New Context        viewport={'width': 1920, 'height': 1080}
+  New Page           url=${url}
+
 Login
   [Arguments]  ${email}    
   ...          ${wachtwoord}
 
-  Log    Voer in email: ${email}
-  Log    Voer in wachtwoord: ${wachtwoord}
-  Log    Klik op de knop bevestigen
+  Type Text    id=email       ${email}
+  Type Text    id=password    ${wachtwoord}
+  Click        id=submit
+  Get Page Errors
+  Sleep        2s
+  Take Screenshot    #filename=${CURDIR}/../outputs/robotframework-browser-screenshot-{index}.jpg
+
+Logout
+  Click    id=logout
