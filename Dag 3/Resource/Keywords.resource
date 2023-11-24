@@ -1,5 +1,7 @@
 # https://robotframework.org/#resources
 # https://marketsquare.github.io/robotframework-browser/Browser.html
+# https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
+# Automated variables?
 
 *** Settings ***
 Library    Browser
