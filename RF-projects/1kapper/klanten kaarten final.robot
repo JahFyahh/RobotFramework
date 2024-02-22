@@ -16,21 +16,24 @@ ${XPath_Item_1}          //*[@id="main"]/div[3]/div[5]/table/tbody/tr[1]
 ${XPath_Item_2}          //*[@id="main"]/div[3]/div[5]/table/tbody/tr[2]/td/input
 ${XPath_Item_3b}         //*[@id="main"]/div[3]/div[5]/table/tbody/tr
 
-${list_Path}         C:\\pCloud\\Holding\\Nayrobiz\\Boekhouden\\1kapper\\klanten\\id_links.txt     # Replace with path to your links file
+${list_Path}         C:\\pCloud\\Holding\\Nayrobiz\\Boekhouden\\1kapper\\klanten\\logboek_klanten_2.txt     # Replace with path to your links file
 ${Download_Path}     C:\\pCloud\\Holding\\Nayrobiz\\Boekhouden\\1kapper\\klanten\\Kleurenkaart     # Replace with path to your download directory
 
 *** Test Cases ***
 Download Files from URLs
+    ${File}=    Get File  ${list_Path}
+    @{urls}=    Split to lines  ${File}
+
     Open Browser    ${URL}    ${Browser}
     Maximize Browser Window
     Input Text    id=username    ${Username}
     Input Password    id=password    ${Password}
     Click Button    xpath=//*[@id="app"]/div[2]/div/div/div/div/form/div[4]/button
     Wait Until Page Contains Element    xpath=//*[@id="header"]/div/div/div/div/ul/li[3]/a
-    ${File}=    Get File  ${list_Path}
-    @{urls}=    Split to lines  ${File}
+
     FOR    ${url}    IN    @{urls}
-        Go To    ${url}color-charts
+        Log    Navigating to URL: ${url}/color-charts
+        Go To    ${url}/color-charts
         
         Wait Until Page Contains Element    xpath=//*[@id="overview-filter-form"]/form/div/div/div/span/span[1]/span
         ${full_name} =    Get Text    xpath=//*[@id="overview-filter-form"]/form/div/div/div/span/span[1]/span
@@ -42,7 +45,8 @@ Download Files from URLs
         ${no_items} =    Get Text    xpath=${XPath_No_Items}
         Run Keyword Unless    '${no_items}' == 'Geen items'    Copy Kleuren Kaart    ${file_path}
 
-        Go To    ${url}permanent-cards
+        Log    Navigating to URL: ${url}/permanent-cards
+        Go To    ${url}/permanent-cards
         ${no_items} =    Get Text    xpath=${XPath_No_Items}
         Run Keyword Unless    '${no_items}' == 'Geen items'    Copy Permanenten Kaart    ${file_path}
     END
