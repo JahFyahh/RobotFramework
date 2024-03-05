@@ -9,9 +9,10 @@ ${URL}               https://employee.1kapper.nl/login
 ${Browser}           Chrome
 ${Username}          luc5429
 ${Password}          @kap8483
-${File_Path}         C:\\pCloud\\Holding\\Nayrobiz\\Boekhouden\\1kapper\\klanten\\id_links.txt     # Replace with path to your links file
-${Download_Path}     C:\\pCloud\\Holding\\Nayrobiz\\Boekhouden\\1kapper\\klanten\\Kleurenkaart     # Replace with path to your download directory
-${CSV_File}          C:\\pCloud\\Holding\\Nayrobiz\\Boekhouden\\1kapper\\klanten\\logboek_klanten.csv
+${main_path}         C:\\pCloud\\Holding\\Nayrobiz\\Boekhouden\\1kapper\\klanten\\
+${File_Path}         ${main_path}id_links.txt
+${Download_Path}     ${main_path}Kleurenkaart
+${CSV_File}          ${main_path}logboek_klanten.csv
 
 *** Test Cases ***
 Download Files from URLs
